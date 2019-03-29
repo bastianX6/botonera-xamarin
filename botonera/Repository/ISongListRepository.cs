@@ -6,6 +6,6 @@ namespace botonera.Repository
 {
     public interface ISongListRepository
     {
-        Task<SongResponseEntity> getSongs();
+        Task<SongResponseEntity> GetSongs();
     }
 }

@@ -23,7 +23,7 @@ namespace botonera.Repository
             cacheSource = new SongListCacheSource();
         }
 
-        public async Task<SongResponseEntity> getSongs()
+        public async Task<SongResponseEntity> GetSongs()
         {
             try
             {
