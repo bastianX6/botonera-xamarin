@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using botonera.Repository.SongList;
 using Xamarin.Forms;
 
-namespace botonera
+namespace botonera.View
 {
     public partial class MainPage : ContentPage
     {

@@ -6,9 +6,8 @@ using Newtonsoft.Json;
 
 namespace botonera.Repository.SongList
 {
-    public class SongListDataSource: ISongListDataSource
+    public class SongListCloudSource: ISongListDataSource
     {
-
         public async Task<SongResponseEntity> GetSongList()
         {
             var url = "https://us-central1-raspberry-instants.cloudfunctions.net/botonera/song/list";

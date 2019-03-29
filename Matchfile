@@ -1,0 +1,8 @@
+git_url("https://github.com/bastianX6/botonera-xamarin-fastlane.git")
+
+storage_mode("git")
+
+type("development") # The default type, can be: appstore, adhoc, enterprise or development
+
+app_identifier(["org.bastianx6.botonera"])
+username("bastianx6@icloud.com") # Your Apple Developer Portal username

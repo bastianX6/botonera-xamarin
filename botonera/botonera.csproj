@@ -18,5 +18,7 @@
     <Folder Include="Repository\" />
     <Folder Include="Entities\" />
     <Folder Include="Repository\SongList\" />
+    <Folder Include="View\" />
+    <Folder Include="ViewModel\" />
   </ItemGroup>
 </Project>
