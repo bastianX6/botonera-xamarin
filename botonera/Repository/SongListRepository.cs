@@ -40,7 +40,8 @@ namespace botonera.Repository
         }
 
 
-        private void storeSongsInCache(SongResponseEntity songs) {
+        private void storeSongsInCache(SongResponseEntity songs)
+        {
             try
             {
                 cacheSource.StoreSongs(songs);
