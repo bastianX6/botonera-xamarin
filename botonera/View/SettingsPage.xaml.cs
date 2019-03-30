@@ -11,5 +11,15 @@ namespace botonera.View
         {
             InitializeComponent();
         }
+
+        void Handle_TextChanged(object sender, Xamarin.Forms.TextChangedEventArgs e)
+        {
+
+        }
+
+        void Handle_OnChanged(object sender, Xamarin.Forms.ToggledEventArgs e)
+        {
+
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using botonera.Entities;
 using botonera.ViewModel;
 using Xamarin.Forms;
@@ -14,16 +15,15 @@ namespace botonera.View
         {
             InitializeComponent();
             viewModel = new SongListViewModel();
-            configureSongList();
+            ConfigureSongList();
         }
 
-        private void configureSongList()
+        private async void ConfigureSongList()
         {
             SongList.ItemsSource = viewModel.Songs;
             SongList.ItemTapped += SongList_ItemTapped;
-            viewModel.UpdateSongs();
+            await viewModel.UpdateSongs();
         }
-
 
         async void SongList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
