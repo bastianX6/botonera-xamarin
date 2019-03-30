@@ -35,9 +35,35 @@ namespace botonera.View
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Error on song play {ex}");
+                System.Diagnostics.Debug.WriteLine($"Error on song play: {ex}");
             }
 
+        }
+
+        async void ButtonStop_Clicked(object sender, System.EventArgs e)
+        {
+            try
+            {
+                var success = await viewModel.Stop();
+                System.Diagnostics.Debug.WriteLine($"Stop songs success: {success}");
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error on song stop: {ex}");
+            }
+        }
+
+        async void ButtonClock_Clicked(object sender, System.EventArgs e)
+        {
+            try
+            {
+                var success = await viewModel.PlayClock();
+                System.Diagnostics.Debug.WriteLine($"Clock success: {success}");
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error on clock song: {ex}");
+            }
         }
     }
 }
