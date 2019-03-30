@@ -24,10 +24,19 @@ namespace botonera.View
         }
 
 
-        void SongList_ItemTapped(object sender, ItemTappedEventArgs e)
+        async void SongList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var song = e.Item as SongEntity;
-            System.Diagnostics.Debug.WriteLine("Song Code: {0} | Song Description: {1}", song.SongCode, song.Description);
+            try
+            {
+                var song = e.Item as SongEntity;
+                var success = await viewModel.PlaySong(song.SongCode);
+                System.Diagnostics.Debug.WriteLine($"Success: {success} Song Code: {song.SongCode} | Song Description: {song.Description}");
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error on song play {ex}");
+            }
+
         }
 
     }

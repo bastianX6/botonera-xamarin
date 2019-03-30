@@ -20,5 +20,6 @@
     <Folder Include="Repository\SongList\" />
     <Folder Include="View\" />
     <Folder Include="ViewModel\" />
+    <Folder Include="Repository\PlaySong\" />
   </ItemGroup>
 </Project>

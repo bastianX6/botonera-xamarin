@@ -9,16 +9,17 @@ namespace botonera.ViewModel
 {
     public class SongListViewModel
     {
-        ISongListRepository repository;
+        ISongsRepository repository;
         public ObservableCollection<SongEntity> Songs;
+        private string endpoint = "http://192.168.0.14:9090";
 
         public SongListViewModel()
         {
-            repository = new SongListRepository();
+            repository = new SongsRepository();
             Songs = new ObservableCollection<SongEntity>();
         }
 
-        public SongListViewModel(ISongListRepository repository)
+        public SongListViewModel(ISongsRepository repository)
         {
             this.repository = repository;
             Songs = new ObservableCollection<SongEntity>();
@@ -33,7 +34,19 @@ namespace botonera.ViewModel
             }
         }
 
+        public async Task<bool> PlaySong(string songCode)
+        {
+            return await repository.PlaySong(endpoint, songCode);
+        }
 
+        public async Task<bool> PlayClock()
+        {
+            return await repository.PlayClock(endpoint);
+        }
 
+        public async Task<bool> Stop()
+        {
+            return await repository.Stop(endpoint);
+        }
     }
 }

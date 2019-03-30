@@ -1,26 +1,30 @@
 ﻿using System;
 using System.Threading.Tasks;
 using botonera.Entities;
+using botonera.Repository.PlaySong;
 using botonera.Repository.SongList;
 
 namespace botonera.Repository
 {
-    public class SongListRepository: ISongListRepository
+    public class SongsRepository: ISongsRepository
     {
         ISongListDataSource cloudSource;
         ISongListCache cacheSource;
+        IPlaySongDataSource playSongCloudSource;
 
-        public SongListRepository(ISongListDataSource cloudSource, ISongListCache cacheSource)
+        public SongsRepository(ISongListDataSource cloudSource, ISongListCache cacheSource, IPlaySongDataSource playSongCloudSource)
         {
             this.cloudSource = cloudSource;
             this.cacheSource = cacheSource;
+            this.playSongCloudSource = playSongCloudSource;
         }
 
 
-        public SongListRepository() 
+        public SongsRepository()
         {
             cloudSource = new SongListCloudSource();
             cacheSource = new SongListCacheSource();
+            playSongCloudSource = new PlaySongCloudSource();
         }
 
         public async Task<SongResponseEntity> GetSongs()
@@ -50,6 +54,24 @@ namespace botonera.Repository
             {
                 System.Diagnostics.Debug.WriteLine("Couldn't save song list in cache: " + ex);
             }
+        }
+
+        public async Task<bool> PlaySong(string endpoint, string songCode)
+        {
+            var statusCode = await playSongCloudSource.PlaySong(endpoint, songCode);
+            return statusCode == System.Net.HttpStatusCode.OK;
+        }
+
+        public async Task<bool> PlayClock(string endpoint)
+        {
+            var statusCode = await playSongCloudSource.PlayClock(endpoint);
+            return statusCode == System.Net.HttpStatusCode.OK;
+        }
+
+        public async Task<bool> Stop(string endpoint)
+        {
+            var statusCode = await playSongCloudSource.Stop(endpoint);
+            return statusCode == System.Net.HttpStatusCode.OK;
         }
     }
 }
