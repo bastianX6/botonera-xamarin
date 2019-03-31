@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="botonera.View.SettingsPage">
+    <TableView x:Name="TableView">
+        <TableSection Title="Endpoint settings" TextColor="Black">
+            <EntryCell x:Name="EndpointCell"
+                       Placeholder="http://"
+                       Completed="Handle_EndpointEntryCompleted"
+                       Label="Endpoint: " />
+        </TableSection>
+        <TableSection Title="Offline settings" TextColor="Black">
+            <SwitchCell x:Name="OfflineSongsCell"
+                        Text="Play songs on device (coming soon)"
+                        OnChanged="Handle_OfflineSwitchOnChanged" />
+        </TableSection>
+    </TableView>
+</ContentPage>

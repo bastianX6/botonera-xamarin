@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 using UIKit;
 
 namespace botonera.iOS
@@ -23,6 +26,7 @@ namespace botonera.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            AppCenter.Start("f70377f4-7c1e-4bee-98af-5c6db9d27bbe", typeof(Analytics), typeof(Crashes));
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

@@ -1,25 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using botonera.Repository.SongList;
+using botonera.Entities;
 using Xamarin.Forms;
 
 namespace botonera.View
 {
-    public partial class MainPage : ContentPage
+    public partial class MainPage : TabbedPage
     {
         public MainPage()
         {
             InitializeComponent();
-        }
-
-        async void Handle_Clicked(object sender, System.EventArgs e)
-        {
-            var dataSource = new SongListDataSource();
-            var data = await dataSource.GetSongList();
-            System.Diagnostics.Debug.WriteLine(data);
         }
     }
 }
