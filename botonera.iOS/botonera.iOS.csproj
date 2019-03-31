@@ -119,6 +119,14 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\152.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\1024.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\167.png" />
+    <ImageAsset Include="Assets.xcassets\song.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\song.imageset\song-30.png" />
+    <ImageAsset Include="Assets.xcassets\song.imageset\song-60.png" />
+    <ImageAsset Include="Assets.xcassets\song.imageset\song-90.png" />
+    <ImageAsset Include="Assets.xcassets\settings.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\settings.imageset\settings-30.png" />
+    <ImageAsset Include="Assets.xcassets\settings.imageset\settings-60.png" />
+    <ImageAsset Include="Assets.xcassets\settings.imageset\settings-90.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -135,5 +143,9 @@
       <Project>{8618F5A5-D443-4EE1-A583-5A0B54A84B76}</Project>
       <Name>botonera</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets.xcassets\song.imageset\" />
+    <Folder Include="Assets.xcassets\settings.imageset\" />
   </ItemGroup>
 </Project>

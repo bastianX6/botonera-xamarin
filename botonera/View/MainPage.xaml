@@ -8,14 +8,14 @@
              android:TabbedPage.ToolbarPlacement="Bottom"
              xmlns:local="clr-namespace:botonera.View"
              >
-    <NavigationPage x:Name="SongListNavigationPage" Title="Song List">
+    <NavigationPage x:Name="SongListNavigationPage" Title="Song List" Icon="song.png">
         <x:Arguments>
-            <local:SongListPage />
+            <local:SongListPage Title="Song List"/>
         </x:Arguments>
     </NavigationPage>
-    <NavigationPage x:Name="SettingsNavigationPage" Title="Configurations">
+    <NavigationPage x:Name="SettingsNavigationPage" Title="Configurations" Icon="settings.png">
         <x:Arguments>
-            <local:SettingsPage />
+            <local:SettingsPage Title="Configurations"/>
         </x:Arguments>
     </NavigationPage>
 </TabbedPage>

@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="true"
              x:Class="botonera.View.SongListPage">
     <StackLayout>
         <StackLayout Orientation="Horizontal">
-            <Button Text="Stop" Clicked="ButtonStop_Clicked" HorizontalOptions="FillAndExpand"/>
-            <Button Text="Clock" Clicked="ButtonClock_Clicked" HorizontalOptions="FillAndExpand"/>
+            <Button Text="Stop" 
+                    Clicked="ButtonStop_Clicked" 
+                    HorizontalOptions="FillAndExpand"
+                    BackgroundColor="#3F51B5"
+                    TextColor="#FFFFFF"
+                    CornerRadius="0"
+                    />
+            <Button Text="Clock" 
+                    Clicked="ButtonClock_Clicked" 
+                    HorizontalOptions="FillAndExpand"
+                    BackgroundColor="#3F51B5"
+                    TextColor="#FFFFFF"
+                    CornerRadius="0"
+                    />
         </StackLayout>
         <ListView x:Name="SongList" >
             <ListView.ItemTemplate>
               <DataTemplate>
-                <TextCell Text="{Binding Description}" />
+                <TextCell Text="{Binding Description}" TextColor="Black" />
               </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
