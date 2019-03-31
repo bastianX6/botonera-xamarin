@@ -6,6 +6,9 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 namespace botonera.Droid
 {
@@ -20,6 +23,7 @@ namespace botonera.Droid
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            AppCenter.Start("faf6a221-117d-4402-9385-652657b62895", typeof(Analytics), typeof(Crashes));
             LoadApplication(new App());
         }
 
