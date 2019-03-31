@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using botonera.Utils;
 using Xamarin.Forms;
 
 namespace botonera.View
@@ -10,16 +10,18 @@ namespace botonera.View
         public SettingsPage()
         {
             InitializeComponent();
+            OfflineSongsCell.On = PropertiesManager.PlayOnDevice;
+            EndpointCell.Text = PropertiesManager.Endpoint;
         }
 
-        void Handle_TextChanged(object sender, Xamarin.Forms.TextChangedEventArgs e)
+        void Handle_OfflineSwitchOnChanged(object sender, ToggledEventArgs e)
         {
-
+            PropertiesManager.PlayOnDevice = e.Value;
         }
 
-        void Handle_OnChanged(object sender, Xamarin.Forms.ToggledEventArgs e)
+        void Handle_EndpointEntryCompleted(object sender, EventArgs e)
         {
-
+            PropertiesManager.Endpoint = EndpointCell.Text;
         }
     }
 }

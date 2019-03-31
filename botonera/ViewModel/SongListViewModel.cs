@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Threading.Tasks;
 using botonera.Entities;
 using botonera.Repository;
+using botonera.Utils;
 
 namespace botonera.ViewModel
 {
@@ -11,7 +12,7 @@ namespace botonera.ViewModel
     {
         ISongsRepository repository;
         public ObservableCollection<SongEntity> Songs;
-        private string endpoint = "http://192.168.0.14:9090";
+        private string endpoint => PropertiesManager.Endpoint;
 
         public SongListViewModel()
         {
