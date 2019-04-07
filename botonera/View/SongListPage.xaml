@@ -6,8 +6,8 @@
              x:Class="botonera.View.SongListPage">
     <StackLayout>
         <StackLayout Orientation="Horizontal">
-            <Button Text="Stop" 
-                    Clicked="ButtonStop_Clicked" 
+            <Button Text="Random" 
+                    Clicked="ButtonRandom_Clicked" 
                     HorizontalOptions="FillAndExpand"
                     BackgroundColor="#3F51B5"
                     TextColor="#FFFFFF"
@@ -15,6 +15,15 @@
                     />
             <Button Text="Clock" 
                     Clicked="ButtonClock_Clicked" 
+                    HorizontalOptions="FillAndExpand"
+                    BackgroundColor="#3F51B5"
+                    TextColor="#FFFFFF"
+                    CornerRadius="0"
+                    />
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Button Text="Stop" 
+                    Clicked="ButtonStop_Clicked" 
                     HorizontalOptions="FillAndExpand"
                     BackgroundColor="#3F51B5"
                     TextColor="#FFFFFF"

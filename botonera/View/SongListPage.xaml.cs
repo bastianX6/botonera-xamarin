@@ -41,6 +41,9 @@ namespace botonera.View
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"Error on song play: {ex}");
+                Analytics.TrackEvent("Song clicked error", new Dictionary<string, string> {
+                    { "Description", $"{ex.Message}" }
+                });
             }
 
         }
@@ -56,6 +59,9 @@ namespace botonera.View
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"Error on song stop: {ex}");
+                Analytics.TrackEvent("Stop Song error", new Dictionary<string, string> {
+                    { "Description", $"{ex.Message}" }
+                });
             }
         }
 
@@ -70,6 +76,32 @@ namespace botonera.View
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"Error on clock song: {ex}");
+                Analytics.TrackEvent("Clock clicked error", new Dictionary<string, string> {
+                    { "Description", $"{ex.Message}" }
+                });
+            }
+        }
+
+        async void ButtonRandom_Clicked(object sender, System.EventArgs e)
+        {
+            try
+            {
+                var random = new Random();
+                var index = random.Next(0, viewModel.Songs.Count - 1);
+                var song = viewModel.Songs[index];
+                var success = await viewModel.PlaySong(song.SongCode);
+                System.Diagnostics.Debug.WriteLine($"Success: {success} Song Code: {song.SongCode} | Song Description: {song.Description}");
+                Analytics.TrackEvent("Random Song clicked", new Dictionary<string, string> {
+                    { "SongCode", $"{song.SongCode}" },
+                    { "SongDescription", $"{song.Description}"}
+                });
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error on random song play: {ex}");
+                Analytics.TrackEvent("Random Song clicked error", new Dictionary<string, string> {
+                    { "Description", $"{ex.Message}" }
+                });
             }
         }
     }
