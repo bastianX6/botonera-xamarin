@@ -9,8 +9,11 @@
         </TableSection>
         <TableSection Title="Offline settings" TextColor="Black">
             <SwitchCell x:Name="OfflineSongsCell"
-                        Text="Play songs on device (coming soon)"
+                        Text="Play songs on device"
                         OnChanged="Handle_OfflineSwitchOnChanged" />
+            <ViewCell>
+                <Button x:Name="DeleteFilesButton" Clicked="Handle_Clicked" Text="Delete all files"/>
+            </ViewCell>
         </TableSection>
     </TableView>
 </ContentPage>
