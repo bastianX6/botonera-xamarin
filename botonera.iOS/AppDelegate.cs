@@ -26,10 +26,15 @@ namespace botonera.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            AppCenter.Start("f70377f4-7c1e-4bee-98af-5c6db9d27bbe", typeof(Analytics), typeof(Crashes));
+            InitAppCenter();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
+        }
+
+        private void InitAppCenter()
+        {
+            AppCenter.Start("f70377f4-7c1e-4bee-98af-5c6db9d27bbe", typeof(Analytics), typeof(Crashes));
         }
     }
 }
