@@ -1,21 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using botonera.Entities;
-using botonera.ViewModel;
-using Microsoft.AppCenter.Analytics;
+﻿using botonera.ViewModel;
 using Xamarin.Forms;
+using botonera.View.SongList;
+using botonera.Utils;
+using Plugin.Permissions.Abstractions;
+using Plugin.Permissions;
+using System;
 
 namespace botonera.View
 {
     public partial class SongListPage : ContentPage
     {
         SongListViewModel viewModel;
+        ISongListActions remotePlayActions;
+        ISongListActions localPlayActions;
 
         public SongListPage()
         {
             InitializeComponent();
             viewModel = new SongListViewModel();
+            remotePlayActions = new RemoteSongListActions(viewModel);
+            localPlayActions = new LocalSongListActions(viewModel);
             ConfigureSongList();
         }
 
@@ -28,80 +32,80 @@ namespace botonera.View
 
         async void SongList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            try
+            if(PropertiesManager.PlayOnDevice)
             {
-                var song = e.Item as SongEntity;
-                var success = await viewModel.PlaySong(song.SongCode);
-                System.Diagnostics.Debug.WriteLine($"Success: {success} Song Code: {song.SongCode} | Song Description: {song.Description}");
-                Analytics.TrackEvent("Song clicked", new Dictionary<string, string> {
-                    { "SongCode", $"{song.SongCode}" },
-                    { "SongDescription", $"{song.Description}"}
-                });
+                var permission = Permission.Storage;
+                try
+                {
+                    var status = await CrossPermissions.Current.CheckPermissionStatusAsync(permission);
+                    if (status != PermissionStatus.Granted)
+                    {
+                        if (await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(permission))
+                        {
+                            await DisplayAlert("Need permission", "Please grant storage permission", "OK");
+                        }
+
+                        var results = await CrossPermissions.Current.RequestPermissionsAsync(permission);
+                        //Best practice to always check that the key exists
+                        if (results.ContainsKey(permission))
+                            status = results[permission];
+                    }
+
+                    if (status == PermissionStatus.Granted)
+                    {
+                        localPlayActions.SongList_ItemTapped(sender, e);
+                    }
+                    else if (status != PermissionStatus.Unknown)
+                    {
+                        await DisplayAlert("Storage Denied", "Can't play song, try again.", "OK");
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    System.Diagnostics.Debug.WriteLine($"Error requesting permissions: {ex}");
+                }
             }
-            catch (Exception ex)
+            else
             {
-                System.Diagnostics.Debug.WriteLine($"Error on song play: {ex}");
-                Analytics.TrackEvent("Song clicked error", new Dictionary<string, string> {
-                    { "Description", $"{ex.Message}" }
-                });
+                remotePlayActions.SongList_ItemTapped(sender, e);
             }
 
         }
 
-        async void ButtonStop_Clicked(object sender, System.EventArgs e)
+        void ButtonStop_Clicked(object sender, System.EventArgs e)
         {
-            try
+            if (PropertiesManager.PlayOnDevice)
             {
-                var success = await viewModel.Stop();
-                Analytics.TrackEvent("Stop clicked");
-                System.Diagnostics.Debug.WriteLine($"Stop songs success: {success}");
+                localPlayActions.ButtonStop_Clicked(sender, e);
             }
-            catch (Exception ex)
+            else
             {
-                System.Diagnostics.Debug.WriteLine($"Error on song stop: {ex}");
-                Analytics.TrackEvent("Stop Song error", new Dictionary<string, string> {
-                    { "Description", $"{ex.Message}" }
-                });
+                remotePlayActions.ButtonStop_Clicked(sender, e);
             }
         }
 
-        async void ButtonClock_Clicked(object sender, System.EventArgs e)
+        void ButtonClock_Clicked(object sender, System.EventArgs e)
         {
-            try
+            if (PropertiesManager.PlayOnDevice)
             {
-                var success = await viewModel.PlayClock();
-                Analytics.TrackEvent("Clock clicked");
-                System.Diagnostics.Debug.WriteLine($"Clock success: {success}");
+                localPlayActions.ButtonClock_Clicked(sender, e);
             }
-            catch (Exception ex)
+            else
             {
-                System.Diagnostics.Debug.WriteLine($"Error on clock song: {ex}");
-                Analytics.TrackEvent("Clock clicked error", new Dictionary<string, string> {
-                    { "Description", $"{ex.Message}" }
-                });
+                remotePlayActions.ButtonClock_Clicked(sender, e);
             }
         }
 
-        async void ButtonRandom_Clicked(object sender, System.EventArgs e)
+        void ButtonRandom_Clicked(object sender, System.EventArgs e)
         {
-            try
+            if (PropertiesManager.PlayOnDevice)
             {
-                var random = new Random();
-                var index = random.Next(0, viewModel.Songs.Count - 1);
-                var song = viewModel.Songs[index];
-                var success = await viewModel.PlaySong(song.SongCode);
-                System.Diagnostics.Debug.WriteLine($"Success: {success} Song Code: {song.SongCode} | Song Description: {song.Description}");
-                Analytics.TrackEvent("Random Song clicked", new Dictionary<string, string> {
-                    { "SongCode", $"{song.SongCode}" },
-                    { "SongDescription", $"{song.Description}"}
-                });
+                localPlayActions.ButtonRandom_Clicked(sender, e);
             }
-            catch (Exception ex)
+            else
             {
-                System.Diagnostics.Debug.WriteLine($"Error on random song play: {ex}");
-                Analytics.TrackEvent("Random Song clicked error", new Dictionary<string, string> {
-                    { "Description", $"{ex.Message}" }
-                });
+                remotePlayActions.ButtonRandom_Clicked(sender, e);
             }
         }
     }
