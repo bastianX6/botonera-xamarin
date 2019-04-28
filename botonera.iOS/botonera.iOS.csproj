@@ -98,6 +98,7 @@
     <Compile Include="Repositories\FileDownload\IOSFileDownloader.cs" />
     <Compile Include="Repositories\PlaySongLocal\IOSAudioPlayer.cs" />
     <Compile Include="Repositories\HUD\IOSHud.cs" />
+    <Compile Include="Delegates\UserNotificationCenterDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -151,6 +152,9 @@
     <PackageReference Include="BTProgressHUD">
       <Version>1.2.0.6</Version>
     </PackageReference>
+    <PackageReference Include="Xamarin.Firebase.iOS.CloudMessaging">
+      <Version>3.1.2</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -166,6 +170,7 @@
     <Folder Include="Repositories\FileDownload\" />
     <Folder Include="Repositories\PlaySongLocal\" />
     <Folder Include="Repositories\HUD\" />
+    <Folder Include="Delegates\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="GoogleService-Info.plist" />
