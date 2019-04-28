@@ -1,6 +1,4 @@
 ﻿using System;
-using System.IO;
-using System.Threading.Tasks;
 using botonera.Entities;
 using botonera.Repository.FileDownload;
 using botonera.Repository.HUD;
