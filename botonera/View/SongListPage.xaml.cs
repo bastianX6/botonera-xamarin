@@ -16,7 +16,7 @@ namespace botonera.View
             InitializeComponent();
             viewModel = new SongListViewModel();
             remotePlayActions = new RemoteSongListActions(viewModel);
-            localPlayActions = new LocalSongListActions();
+            localPlayActions = new LocalSongListActions(viewModel);
             ConfigureSongList();
         }
 

@@ -69,6 +69,7 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\FileDownload\AndroidFileDownloader.cs" />
+    <Compile Include="Repository\PlaySongLocal\AndroidAudioPlayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -109,6 +110,7 @@
     <Folder Include="Resources\drawable-xxxhdpi\" />
     <Folder Include="Repository\" />
     <Folder Include="Repository\FileDownload\" />
+    <Folder Include="Repository\PlaySongLocal\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\botonera\botonera.csproj">
