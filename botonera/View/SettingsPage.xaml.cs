@@ -23,5 +23,14 @@ namespace botonera.View
         {
             PropertiesManager.Endpoint = EndpointCell.Text;
         }
+
+        async void Handle_Clicked(object sender, System.EventArgs e)
+        {
+            bool answer = await DisplayAlert("Are you sure?", "You will delete all song files", "Delete all", "Cancel");
+            if (answer)
+            {
+                // Delete all files
+            }
+        }
     }
 }

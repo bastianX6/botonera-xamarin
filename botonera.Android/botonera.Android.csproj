@@ -63,6 +63,12 @@
     <PackageReference Include="FirebaseStorage.net">
       <Version>1.0.3</Version>
     </PackageReference>
+    <PackageReference Include="AndHUD">
+      <Version>1.4.1</Version>
+    </PackageReference>
+    <PackageReference Include="Plugin.CurrentActivity">
+      <Version>2.1.0.4</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -70,6 +76,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\FileDownload\AndroidFileDownloader.cs" />
     <Compile Include="Repository\PlaySongLocal\AndroidAudioPlayer.cs" />
+    <Compile Include="Repository\HUD\AndroidHud.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -111,6 +118,7 @@
     <Folder Include="Repository\" />
     <Folder Include="Repository\FileDownload\" />
     <Folder Include="Repository\PlaySongLocal\" />
+    <Folder Include="Repository\HUD\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\botonera\botonera.csproj">

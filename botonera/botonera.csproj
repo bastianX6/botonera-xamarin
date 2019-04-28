@@ -34,5 +34,6 @@
     <Folder Include="Repository\FileDownload\" />
     <Folder Include="View\SongList\" />
     <Folder Include="Repository\PlaySongLocal\" />
+    <Folder Include="Repository\HUD\" />
   </ItemGroup>
 </Project>

@@ -3,6 +3,7 @@ using System.IO;
 using System.Threading.Tasks;
 using botonera.Entities;
 using botonera.Repository.FileDownload;
+using botonera.Repository.HUD;
 using botonera.Repository.PlaySongLocal;
 using botonera.ViewModel;
 using Xamarin.Forms;
@@ -11,21 +12,24 @@ namespace botonera.View.SongList
 {
     public class LocalSongListActions: ISongListActions
     {
+        SongListViewModel viewModel;
         FirebaseStorageFileManager fileManager;
         IAudioPlayer audioPlayer;
-        SongListViewModel viewModel;
+        IHud hud;
+
 
         public LocalSongListActions(SongListViewModel viewModel)
         {
             fileManager = new FirebaseStorageFileManager();
             fileManager.OnFileDownloaded += FileManager_OnFileDownloaded;
             audioPlayer = DependencyService.Get<IAudioPlayer>();
+            hud = DependencyService.Get<IHud>();
             this.viewModel = viewModel;
         }
 
         public void ButtonClock_Clicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            hud.ShowError("Coming soon");
         }
 
         public void ButtonRandom_Clicked(object sender, EventArgs e)
@@ -63,17 +67,20 @@ namespace botonera.View.SongList
 
         private void DownloadFile(SongEntity song)
         {
+            hud.ShowInfo("Downloading file...");
             fileManager.DownloadFile(song.songName);
         }
 
         void FileManager_OnFileDownloaded(object sender, DownloadEventArgs e)
         {
+            hud.Dismiss();
             if(e.FileSaved)
             {
                 PlayFile(e.FileName);
             }
             else
             {
+                hud.ShowError("Couldn't download file");
                 System.Diagnostics.Debug.WriteLine($"Couldn't download file: {e.FileName}");
             }
         }
