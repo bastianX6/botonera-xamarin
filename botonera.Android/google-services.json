@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "123157042281",
+    "firebase_url": "https://raspberry-instants.firebaseio.com",
+    "project_id": "raspberry-instants",
+    "storage_bucket": "raspberry-instants.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:123157042281:android:4624c8fe805221f7",
+        "android_client_info": {
+          "package_name": "org.bastianx6.botonera"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "123157042281-megut3urt5go91jo1t7stimcoh040qfm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.bastianx6.botonera",
+            "certificate_hash": "6da3c6ecd1790b44a569d030908ba006de40057f"
+          }
+        },
+        {
+          "client_id": "123157042281-03d67fj5eas1lt4lj8dbgq8ljjqotmjs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.bastianx6.botonera",
+            "certificate_hash": "2c4fecf74852851651a99107a1011203268fb264"
+          }
+        },
+        {
+          "client_id": "123157042281-ghe2288visatg35ilpk9q6h3us3j0efa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_8aaZDTnC6OlKocSDgKxToc2bWMenw8Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "123157042281-ghe2288visatg35ilpk9q6h3us3j0efa.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "123157042281-a9d9niif2rnk48gtolosrht12n0uutvp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.bastianx6.botonera"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

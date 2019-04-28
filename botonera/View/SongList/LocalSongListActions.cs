@@ -1,11 +1,11 @@
 ﻿using System;
-using System.IO;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 using botonera.Entities;
 using botonera.Repository.FileDownload;
 using botonera.Repository.HUD;
 using botonera.Repository.PlaySongLocal;
 using botonera.ViewModel;
+using Microsoft.AppCenter.Analytics;
 using Xamarin.Forms;
 
 namespace botonera.View.SongList
@@ -30,6 +30,7 @@ namespace botonera.View.SongList
         public void ButtonClock_Clicked(object sender, EventArgs e)
         {
             hud.ShowError("Coming soon");
+            Analytics.TrackEvent("Local Clock clicked");
         }
 
         public void ButtonRandom_Clicked(object sender, EventArgs e)
@@ -37,17 +38,26 @@ namespace botonera.View.SongList
             var random = new Random();
             var index = random.Next(0, viewModel.Songs.Count - 1);
             var song = viewModel.Songs[index];
+            Analytics.TrackEvent("Local Random Song clicked", new Dictionary<string, string> {
+                { "SongCode", $"{song.SongCode}" },
+                { "SongDescription", $"{song.Description}"}
+            });
             TryPlaySong(song);
         }
 
         public void ButtonStop_Clicked(object sender, EventArgs e)
         {
             audioPlayer.StopAllSongs();
+            Analytics.TrackEvent("Local Stop clicked");
         }
 
         public void SongList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var song = e.Item as SongEntity;
+            Analytics.TrackEvent("Local Song clicked", new Dictionary<string, string> {
+                { "SongCode", $"{song.SongCode}" },
+                { "SongDescription", $"{song.Description}"}
+            });
             TryPlaySong(song);
         }
 

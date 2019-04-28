@@ -45,5 +45,9 @@
 	<string>Necesitamos almacenar imágenes para darte una mejor experiencia.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Necesitamos acceder a tus imágenes para darte una mejor experiencia.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 </dict>
 </plist>

@@ -2,6 +2,9 @@
 using Xamarin.Forms;
 using botonera.View.SongList;
 using botonera.Utils;
+using Plugin.Permissions.Abstractions;
+using Plugin.Permissions;
+using System;
 
 namespace botonera.View
 {
@@ -27,11 +30,41 @@ namespace botonera.View
             await viewModel.UpdateSongs();
         }
 
-        void SongList_ItemTapped(object sender, ItemTappedEventArgs e)
+        async void SongList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             if(PropertiesManager.PlayOnDevice)
             {
-                localPlayActions.SongList_ItemTapped(sender, e);
+                var permission = Permission.Storage;
+                try
+                {
+                    var status = await CrossPermissions.Current.CheckPermissionStatusAsync(permission);
+                    if (status != PermissionStatus.Granted)
+                    {
+                        if (await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(permission))
+                        {
+                            await DisplayAlert("Need permission", "Please grant storage permission", "OK");
+                        }
+
+                        var results = await CrossPermissions.Current.RequestPermissionsAsync(permission);
+                        //Best practice to always check that the key exists
+                        if (results.ContainsKey(permission))
+                            status = results[permission];
+                    }
+
+                    if (status == PermissionStatus.Granted)
+                    {
+                        localPlayActions.SongList_ItemTapped(sender, e);
+                    }
+                    else if (status != PermissionStatus.Unknown)
+                    {
+                        await DisplayAlert("Storage Denied", "Can't play song, try again.", "OK");
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    System.Diagnostics.Debug.WriteLine($"Error requesting permissions: {ex}");
+                }
             }
             else
             {
