@@ -39,8 +39,6 @@
 	</dict>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
-	<key>CFBundleVersion</key>
-	<string>1</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Necesitamos almacenar imágenes para darte una mejor experiencia.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -49,5 +47,13 @@
 	<array>
 		<string>remote-notification</string>
 	</array>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Necesitamos acceder al calendario para agendar eventos que te podrían interesar.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>La aplicación te entregará información relevante según tu ubicación.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>La aplicación te entregará información relevante según tu ubicación.</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
 </dict>
 </plist>
