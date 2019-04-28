@@ -6,6 +6,7 @@ namespace botonera.Repository.FileDownload
         void DownloadFile(string url, string folder, string fileName);
         bool FileExists(string filename, string folder);
         string GetFilePath(string filename, string folder);
+        bool DeleteAllFiles(string folder);
         event EventHandler<DownloadEventArgs> OnFileDownloaded;
     }
 

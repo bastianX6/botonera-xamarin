@@ -60,5 +60,20 @@ namespace botonera.iOS.Repositories.FileDownload
         {
             return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), folder, filename);
         }
+
+        public bool DeleteAllFiles(string folder)
+        {
+            try
+            {
+                var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), folder);
+                Directory.Delete(path, true);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error deleting songs folder: {ex}");
+                return false;
+            }
+        }
     }
 }

@@ -32,6 +32,11 @@ namespace botonera.Repository.FileDownload
             return fileManager.GetFilePath(filename, folderName);
         }
 
+        public bool DeleteAllFiles()
+        {
+            return fileManager.DeleteAllFiles(folderName);
+        }
+
         void Downloader_OnFileDownloaded(object sender, DownloadEventArgs e)
         {
             if (OnFileDownloaded != null)

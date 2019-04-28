@@ -24,7 +24,7 @@ namespace botonera.Droid.Repository.HUD
 
         public void ShowError(string message)
         {
-            AndHUD.Shared.ShowError(CrossCurrentActivity.Current.Activity, message);
+            AndHUD.Shared.ShowError(CrossCurrentActivity.Current.Activity, message, timeout: new TimeSpan(0,0,1));
         }
 
         public void ShowInfo(string message)
