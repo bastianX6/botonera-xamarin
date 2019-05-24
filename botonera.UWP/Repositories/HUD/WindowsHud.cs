@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Controls;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(WindowsHud))]
@@ -23,14 +24,28 @@ namespace botonera.UWP.Repositories.HUD
             //throw new NotImplementedException();
         }
 
-        public void ShowError(string message)
+        public async void ShowError(string message)
         {
-            //throw new NotImplementedException();
+            ContentDialog errorDialog = new ContentDialog()
+            {
+                Title = "Error",
+                Content = message,
+                CloseButtonText = "Ok"
+            };
+
+            await errorDialog.ShowAsync();
         }
 
-        public void ShowInfo(string message)
+        public async void ShowInfo(string message)
         {
-            //throw new NotImplementedException();
+            ContentDialog infoDialog = new ContentDialog()
+            {
+                Title = "Information",
+                Content = message,
+                CloseButtonText = "Ok"
+            };
+
+            await infoDialog.ShowAsync();
         }
     }
 }
