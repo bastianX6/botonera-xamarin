@@ -22,7 +22,8 @@ namespace botonera
         protected override void OnStart()
         {
             AppCenter.Start("ios=f70377f4-7c1e-4bee-98af-5c6db9d27bbe;"
-                + "android=faf6a221-117d-4402-9385-652657b62895", typeof(Analytics), typeof(Crashes));
+                + "android=faf6a221-117d-4402-9385-652657b62895" 
+                + "uwp=f6b4bb7d-115b-445b-97e1-3655c98a01e3;", typeof(Analytics), typeof(Crashes));
         }
 
         protected override void OnSleep()

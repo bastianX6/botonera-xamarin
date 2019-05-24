@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -30,6 +33,7 @@ namespace botonera.UWP
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            AppCenter.Start("f6b4bb7d-115b-445b-97e1-3655c98a01e3", typeof(Analytics), typeof(Crashes));
         }
 
         /// <summary>
