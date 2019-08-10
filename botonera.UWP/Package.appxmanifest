@@ -9,7 +9,7 @@
   <Identity
     Name="4c408cc4-73ed-4009-a87f-17a19a0230ae"
     Publisher="CN=basti"
-    Version="1.0.0.0" />
+    Version="1.0.2.0" />
 
   <mp:PhoneIdentity PhoneProductId="4c408cc4-73ed-4009-a87f-17a19a0230ae" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
